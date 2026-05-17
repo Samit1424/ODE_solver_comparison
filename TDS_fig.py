@@ -1,7 +1,6 @@
 """
 tds_figures.py
 ==============
-Generates all figures for the TDS article
 "My scipy ODE solver was killing my Bayesian inference"
 
 Figures:
