@@ -4,11 +4,11 @@ tds_figures.py
 "My scipy ODE solver was killing my Bayesian inference"
 
 Figures:
-  tds_fig1_horror.pdf   -- the bottleneck: timing breakdown of a dynesty run
-  tds_fig2_speedup.pdf  -- before vs after: solve_ivp vs diffrax
-  tds_fig3_gradient.pdf -- finite-diff gradient cost vs autodiff
-  tds_fig4_inference.pdf-- full cosmological inference comparison
-  tds_fig5_gotchas.pdf  -- visual summary of the three gotchas
+  fig1.pdf   -- the bottleneck: timing breakdown of a dynesty run
+  fig2.pdf  -- before vs after: solve_ivp vs diffrax
+  fig3.pdf -- finite-diff gradient cost vs autodiff
+  fig4.pdf-- full cosmological inference comparison
+  fig5.pdf  -- visual summary of the three gotchas
 """
 
 import time, warnings, json
@@ -139,7 +139,7 @@ print(f"  diffrax:    {t_dfx_run:.1f} s")
 print(f"  scipy FD grad 100k: {t_fd_run:.0f} s")
 
 # ═══════════════════════════════════════════════════════════════════
-# FIG 1 — The horror: what a 100k-call dynesty run costs
+# FIG 1 — About a 100k-call dynesty run costs
 # ═══════════════════════════════════════════════════════════════════
 fig, axes = plt.subplots(1, 2, figsize=(13, 5))
 
@@ -171,9 +171,9 @@ ax.set_xlim(0, max(times_scipy)*1.45)
 
 fig.suptitle("The bottleneck, visualised", fontsize=13, fontweight="bold", y=1.01)
 fig.tight_layout()
-fig.savefig("tds_fig1_horror.pdf", bbox_inches="tight")
+fig.savefig("fig1.pdf", bbox_inches="tight")
 plt.close()
-print("  saved tds_fig1_horror.pdf")
+print("  saved fig1.pdf")
 
 # ═══════════════════════════════════════════════════════════════════
 # FIG 2 — Single call speedup + cosmological fit
@@ -221,9 +221,9 @@ ax.set_title("The inference problem\n(30 mock SNIa, flat ΛCDM)")
 ax.legend(fontsize=9)
 
 fig.tight_layout()
-fig.savefig("tds_fig2_speedup.pdf", bbox_inches="tight")
+fig.savefig("fig2.pdf", bbox_inches="tight")
 plt.close()
-print("  saved tds_fig2_speedup.pdf")
+print("  saved fig2.pdf")
 
 # ═══════════════════════════════════════════════════════════════════
 # FIG 3 — Gradient cost comparison + loss landscape with gradient
@@ -292,9 +292,9 @@ ax.set_title(r"Loss landscape: $-\log\mathcal{L}(\Omega_m, H_0)$")
 ax.legend(fontsize=9)
 
 fig.tight_layout()
-fig.savefig("tds_fig3_gradient.pdf", bbox_inches="tight")
+fig.savefig("fig3.pdf", bbox_inches="tight")
 plt.close()
-print("  saved tds_fig3_gradient.pdf")
+print("  saved fig3.pdf")
 
 # ═══════════════════════════════════════════════════════════════════
 # FIG 4 — Full inference comparison: scipy FD vs diffrax autodiff
@@ -366,9 +366,9 @@ axes[2].set_title("Loss convergence"); axes[2].legend(fontsize=9)
 fig.suptitle("MAP inference on flat ΛCDM from 30 mock SNIa",
              fontsize=13, fontweight="bold")
 fig.tight_layout()
-fig.savefig("tds_fig4_inference.pdf", bbox_inches="tight")
+fig.savefig("fig4.pdf", bbox_inches="tight")
 plt.close()
-print("  saved tds_fig4_inference.pdf")
+print("  saved fig4.pdf")
 
 # ═══════════════════════════════════════════════════════════════════
 # FIG 5 — The three gotchas: visual panels
@@ -461,9 +461,9 @@ ax.set_title("Gotcha 3: argument order\n(silent wrong results with odeint)",
 fig.suptitle("The three gotchas I wish someone had told me",
              fontsize=13, fontweight="bold")
 fig.tight_layout()
-fig.savefig("tds_fig5_gotchas.pdf", bbox_inches="tight")
+fig.savefig("fig5.pdf", bbox_inches="tight")
 plt.close()
-print("  saved tds_fig5_gotchas.pdf")
+print("  saved fig5.pdf")
 
 # Summary numbers for LaTeX
 summary = {
