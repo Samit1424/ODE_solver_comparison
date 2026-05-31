@@ -21,9 +21,9 @@ The context is a mock cosmological inference problem: estimating the matter dens
 3. **`fig3.pdf`**: Compares the cost of one gradient step between central finite difference (which scales linearly with parameter count) and JAX autodiff (constant cost), overlaying a gradient vector on the loss landscape.
 4. **`fig4.pdf`**: A full optimization/inference comparison. It tracks the convergence of $\Omega_m$ and $H_0$ and the likelihood loss over 350 iterations between `scipy` + Gradient Descent and `diffrax` + `optax` Adam.
 5. **`fig5.pdf`**: A visual summary of three common pitfalls when transitioning to JAX and Diffrax:
-    - **Gotcha 1:** Forgetting to enable 64-bit precision (`jax_enable_x64`).
-    - **Gotcha 2:** Benchmarking without warming up JIT compilation.
-    - **Gotcha 3:** Misinterpreting RHS function argument orders (e.g., `solve_ivp`/`diffrax` expecting `(t, y, args)` while `scipy.integrate.odeint` uses `(y, t, args)`).
+    - **Caveat 1:** Forgetting to enable 64-bit precision (`jax_enable_x64`).
+    - **Caveat 2:** Benchmarking without warming up JIT compilation.
+    - **Caveat 3:** Misinterpreting RHS function argument orders (e.g., `solve_ivp`/`diffrax` expecting `(t, y, args)` while `scipy.integrate.odeint` uses `(y, t, args)`).
 
 ## 🚀 How to Run
 
