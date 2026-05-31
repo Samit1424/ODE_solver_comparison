@@ -1,5 +1,5 @@
 """
-tds_figures.py
+figures.py
 ==============
 "My scipy ODE solver was killing my Bayesian inference"
 
@@ -375,7 +375,7 @@ print("  saved fig4.pdf")
 # ═══════════════════════════════════════════════════════════════════
 fig, axes = plt.subplots(1, 3, figsize=(15, 4.5))
 
-# Gotcha 1: 32-bit vs 64-bit step counts
+# Caveat 1: 32-bit vs 64-bit step counts
 jax.config.update("jax_enable_x64", False)
 try:
     sol32 = dfx.diffeqsolve(
@@ -409,7 +409,7 @@ ax.text(0.5, 0.55, "jax.config.update(\n  'jax_enable_x64', True)",
         color=C1, fontweight="bold",
         bbox=dict(boxstyle="round", facecolor="#efffee", edgecolor=C1))
 
-# Gotcha 2: JIT warmup
+# Caveat 2: JIT warmup
 warmup_times = []
 jit_fn = jax.jit(lambda: mu_diffrax(jnp.array([0.3, 70.0])))
 for call_n in range(6):
@@ -433,7 +433,7 @@ ax.text(0.6, 0.7, "Always warm up\nbefore benchmarking!",
         color=C1, fontweight="bold",
         bbox=dict(boxstyle="round", facecolor="#efffee", edgecolor=C1))
 
-# Gotcha 3: argument order
+# Caveat 3: argument order
 ax = axes[2]
 ax.axis("off")
 table_data = [
@@ -487,4 +487,4 @@ summary = {
 with open("tds_summary.json", "w") as f:
     json.dump(summary, f, indent=2)
 print("\n", json.dumps(summary, indent=2))
-print("\nAll TDS figures done.")
+print("\nAll figures done.")
